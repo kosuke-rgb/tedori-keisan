@@ -39,6 +39,34 @@
   "inLanguage": "ja"
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "額面年収と手取り年収は何が違いますか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "額面年収は、社会保険料や税金が引かれる前の給与総額（求人票や源泉徴収票の「支払金額」）です。そこから健康保険料・厚生年金保険料・雇用保険料・所得税・住民税を差し引いた、実際に振り込まれる金額が手取り年収です。一般的に額面の75〜80%程度が手取りの目安になります。" }
+    },
+    {
+      "@type": "Question",
+      "name": "新卒・転職1年目は本当に住民税がかかりませんか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "住民税は前年1〜12月の所得をもとに計算され、翌年6月から天引きが始まる仕組みです。そのため、新卒1年目や、前年に収入がなかった人が転職した場合は、原則として1年目は住民税が引かれません。2年目の6月給与から天引きが始まるため、額面が同じでも1年目より2年目の方が手取りが減ったと感じることがあります。" }
+    },
+    {
+      "@type": "Question",
+      "name": "ボーナス（賞与）も含めて計算できますか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "このツールは年間の総支給額（額面年収）を入力する形式のため、ボーナスを含めた年収を入力すれば、年間トータルの手取りの目安を計算できます。ただし賞与には月給と異なる社会保険料・源泉徴収の計算方法が使われるため、月々の手取りとボーナス時の手取りの内訳を厳密に分けたい場合は、給与明細でのご確認をおすすめします。" }
+    },
+    {
+      "@type": "Question",
+      "name": "40歳未満と40歳以上で何が変わりますか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "40歳になると介護保険料の負担が始まり、健康保険料に上乗せされる形で天引きされます。そのため同じ額面年収でも、40歳以上の方が社会保険料の負担が増え、手取りはやや少なくなります。" }
+    }
+  ]
+}
+</script>
 <style>
 :root {
   --bg: #ffffff;
@@ -154,6 +182,19 @@ footer.site-footer {
 }
 footer.site-footer p { margin: 0 0 0.5rem; }
 footer.site-footer a { color: var(--accent); }
+
+.faq-item { border-bottom: 1px solid var(--line); padding: 0.9rem 0; }
+.faq-item:last-child { border-bottom: none; }
+.faq-item summary {
+  cursor: pointer; font-weight: 700; font-size: 0.92rem; list-style: none;
+  position: relative; padding-right: 1.6rem;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+'; position: absolute; right: 0; top: 0; color: var(--accent); font-weight: 700; font-size: 1.1rem;
+}
+.faq-item[open] summary::after { content: '−'; }
+.faq-item p { margin: 0.7rem 0 0; color: var(--muted); font-size: 0.88rem; }
 </style>
 </head>
 <body>
@@ -223,6 +264,26 @@ footer.site-footer a { color: var(--accent); }
       data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
+
+  <section>
+    <h2>よくある質問</h2>
+    <details class="faq-item">
+      <summary>額面年収と手取り年収は何が違いますか？</summary>
+      <p>額面年収は、社会保険料や税金が引かれる前の給与総額（求人票や源泉徴収票の「支払金額」）です。そこから健康保険料・厚生年金保険料・雇用保険料・所得税・住民税を差し引いた、実際に振り込まれる金額が手取り年収です。一般的に額面の75〜80%程度が手取りの目安になります。</p>
+    </details>
+    <details class="faq-item">
+      <summary>新卒・転職1年目は本当に住民税がかかりませんか？</summary>
+      <p>住民税は前年1〜12月の所得をもとに計算され、翌年6月から天引きが始まる仕組みです。そのため、新卒1年目や、前年に収入がなかった人が転職した場合は、原則として1年目は住民税が引かれません。2年目の6月給与から天引きが始まるため、額面が同じでも1年目より2年目の方が手取りが減ったと感じることがあります。</p>
+    </details>
+    <details class="faq-item">
+      <summary>ボーナス（賞与）も含めて計算できますか？</summary>
+      <p>このツールは年間の総支給額（額面年収）を入力する形式のため、ボーナスを含めた年収を入力すれば、年間トータルの手取りの目安を計算できます。ただし賞与には月給と異なる社会保険料・源泉徴収の計算方法が使われるため、月々の手取りとボーナス時の手取りの内訳を厳密に分けたい場合は、給与明細でのご確認をおすすめします。</p>
+    </details>
+    <details class="faq-item">
+      <summary>40歳未満と40歳以上で何が変わりますか？</summary>
+      <p>40歳になると介護保険料の負担が始まり、健康保険料に上乗せされる形で天引きされます。そのため同じ額面年収でも、40歳以上の方が社会保険料の負担が増え、手取りはやや少なくなります。</p>
+    </details>
+  </section>
 
   <section class="contact-box">
     <h2>ご意見・追加してほしい機能</h2>
