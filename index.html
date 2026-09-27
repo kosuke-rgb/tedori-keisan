@@ -239,11 +239,11 @@ footer.site-footer a { color: var(--accent); }
   <header class="masthead">
     <h1>手取り計算ツール</h1>
     <p class="lede">求人票に書いてある額面年収を入れるだけで、社会保険料・所得税・住民税を差し引いた手取り年収・手取り月収の目安を計算します。</p>
-    <span class="updated-note">税率・保険料率 最終確認日: 2026年9月4日</span>
+    <span class="updated-note">税率・保険料率 最終確認日: 2026年9月27日（令和7・8年度税制改正の給与所得控除・基礎控除の見直しに対応済み）</span>
   </header>
 
   <div class="notice-box">
-    ⚠️ 住民税は前年の所得をもとに翌年度に課税されるため、新卒・転職1年目は原則として住民税がかかりません（2年目の6月から天引きが始まります）。この計算は「今の年収がそのまま続いた場合」の定常状態の目安です。社会保険料率は<a href="https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/premium_prefectures/r08/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">協会けんぽ</a>、所得税率は<a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2260.htm" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">国税庁</a>の最新情報にもとづいています。
+    ⚠️ 令和7年度・8年度の税制改正により、給与所得控除の最低保障額（55万円→74万円）と所得税の基礎控除（令和7・8年分のみ58万円〜95万円に上乗せ）が見直されています。本ツールはこの改正に対応した金額で計算しています。住民税は前年の所得をもとに翌年度に課税されるため、新卒・転職1年目は原則として住民税がかかりません（2年目の6月から天引きが始まります）。この計算は「今の年収がそのまま続いた場合」の定常状態の目安です。社会保険料率は<a href="https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/premium_prefectures/r08/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">協会けんぽ</a>、所得税の制度は<a href="https://www.nta.go.jp/users/gensen/2025kiso/index.htm" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">国税庁</a>の最新情報にもとづいています。
   </div>
 
   <section>
@@ -303,11 +303,11 @@ footer.site-footer a { color: var(--accent); }
     <h2>手取り額の計算方法(4つのステップ)</h2>
     <p>このツールは、以下の順番で額面年収から手取り年収を計算しています。</p>
     <p><strong>ステップ1: 給与所得控除を引く</strong><br>
-    まず、額面年収に応じて決まる「給与所得控除」を差し引き、税金の計算のもとになる「給与所得」を求めます。給与所得控除は年収162.5万円以下なら55万円の定額ですが、年収が上がるにつれて「収入×20%+44万円」のように段階的に増えていく仕組みです（上限は195万円）。</p>
+    まず、額面年収に応じて決まる「給与所得控除」を差し引き、税金の計算のもとになる「給与所得」を求めます。給与所得控除は年収220万円以下なら74万円の定額ですが、年収が上がるにつれて「収入×20%+44万円」のように段階的に増えていく仕組みです（上限は195万円）。この最低保障額は令和7年度・8年度の税制改正で55万円から段階的に引き上げられました。</p>
     <p><strong>ステップ2: 社会保険料を概算する</strong><br>
     健康保険料・厚生年金保険料・雇用保険料を合わせた社会保険料を、額面年収に対しておよそ14.7%(40歳未満)・15.5%(40歳以上)の概算率で計算します。実際の内訳や正確な料率は「<a href="https://webtools-labs.com/shakaihoken-uchiwake-keisan/">給与の社会保険料 内訳計算ツール</a>」でご確認いただけます。</p>
     <p><strong>ステップ3: 所得税を計算する</strong><br>
-    給与所得から社会保険料と基礎控除(48万円)を引いた「課税所得」に対して、5%〜45%の累進税率をかけます。年収が上がるほど段階的に税率が上がっていく仕組みで、2037年までは復興特別所得税として通常の所得税額の2.1%が上乗せされます。</p>
+    給与所得から社会保険料と基礎控除を引いた「課税所得」に対して、5%〜45%の累進税率をかけます。所得税の基礎控除は令和7・8年分に限り、合計所得金額に応じて58万円〜95万円に引き上げられています（令和9年分以後は58万円に戻る予定）。年収が上がるほど段階的に税率が上がっていく仕組みで、2037年までは復興特別所得税として通常の所得税額の2.1%が上乗せされます。</p>
     <p><strong>ステップ4: 住民税を計算する</strong><br>
     住民税は、給与所得から社会保険料と住民税用の基礎控除(43万円)を引いた金額の10%(所得割)に、定額の均等割5,000円を加えて計算します。前年の所得をもとに翌年度課税されるため、新卒1年目は原則かかりません。</p>
     <p>最後に、額面年収からステップ2〜4で計算した社会保険料・所得税・住民税を差し引いた金額が、手取り年収になります。</p>
@@ -322,9 +322,9 @@ footer.site-footer a { color: var(--accent); }
         <tbody>
           <tr><td>① 給与所得控除後の給与所得</td><td class="num">276万円(400万円 − 124万円)</td></tr>
           <tr><td>② 社会保険料(概算14.7%)</td><td class="num">▲58.8万円</td></tr>
-          <tr><td>③ 所得税(復興特別所得税込み)</td><td class="num">▲8.6万円</td></tr>
+          <tr><td>③ 所得税(復興特別所得税込み)</td><td class="num">▲6.6万円</td></tr>
           <tr><td>④ 住民税</td><td class="num">▲17.9万円</td></tr>
-          <tr class="total"><td>手取り年収</td><td class="num">約314.6万円(月換算 約26.2万円)</td></tr>
+          <tr class="total"><td>手取り年収</td><td class="num">約316.7万円(月換算 約26.4万円)</td></tr>
         </tbody>
       </table>
     </div>
@@ -431,13 +431,22 @@ footer.site-footer a { color: var(--accent); }
 (function () {
   function yen(n) { return Math.round(n).toLocaleString('ja-JP') + '円'; }
 
+  // 給与所得控除（令和8年分以後。国税庁タックスアンサーNo.1410にもとづく）
   function salaryDeduction(income) {
-    if (income <= 1625000) return 550000;
-    if (income <= 1800000) return Math.round(income * 0.4 - 100000);
+    if (income <= 2200000) return 740000;
     if (income <= 3600000) return Math.round(income * 0.3 + 80000);
     if (income <= 6600000) return Math.round(income * 0.2 + 440000);
     if (income <= 8500000) return Math.round(income * 0.1 + 1100000);
     return 1950000;
+  }
+
+  // 所得税の基礎控除（令和7・8年分の時限措置。国税庁「基礎控除の見直し等」にもとづく）
+  function basicDeduction(salaryIncome) {
+    if (salaryIncome <= 1320000) return 950000;
+    if (salaryIncome <= 3360000) return 880000;
+    if (salaryIncome <= 4890000) return 680000;
+    if (salaryIncome <= 6550000) return 630000;
+    return 580000;
   }
 
   function socialInsurance(income, ageGroup) {
@@ -461,6 +470,7 @@ footer.site-footer a { color: var(--accent); }
 
   function residentTax(income, socialIns) {
     var salaryIncome = Math.max(0, income - salaryDeduction(income));
+    // 住民税の基礎控除は所得税の改正とは連動せず43万円のまま（総務省）
     var taxableForResident = Math.max(0, salaryIncome - socialIns - 430000);
     return Math.round(taxableForResident * 0.10 + 5000);
   }
@@ -468,7 +478,7 @@ footer.site-footer a { color: var(--accent); }
   function calc(income, ageGroup) {
     var salaryIncome = Math.max(0, income - salaryDeduction(income));
     var socialIns = socialInsurance(income, ageGroup);
-    var taxableForIncomeTax = Math.max(0, salaryIncome - socialIns - 480000);
+    var taxableForIncomeTax = Math.max(0, salaryIncome - socialIns - basicDeduction(salaryIncome));
     var incTax = incomeTax(taxableForIncomeTax);
     var resTax = residentTax(income, socialIns);
     var netIncome = income - socialIns - incTax - resTax;
