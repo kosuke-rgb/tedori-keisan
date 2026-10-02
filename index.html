@@ -258,11 +258,11 @@ footer.site-footer a { color: var(--accent); }
   <header class="masthead">
     <h1>手取り計算ツール</h1>
     <p class="lede">求人票に書いてある額面年収を入れるだけで、社会保険料・所得税・住民税を差し引いた手取り年収・手取り月収の目安を計算します。</p>
-    <span class="updated-note">税率・保険料率 最終確認日: 2026年9月27日（令和7・8年度税制改正の給与所得控除・基礎控除の見直しに対応済み）</span>
+    <span class="updated-note">税率・保険料率 最終確認日: 2026年10月2日（令和8年度税制改正の基礎控除（合計所得489万円以下は104万円）に対応、令和7・8年度税制改正の給与所得控除・基礎控除の見直しに対応済み）</span>
   </header>
 
   <div class="notice-box">
-    ⚠️ 令和7年度・8年度の税制改正により、給与所得控除の最低保障額（55万円→74万円）と所得税の基礎控除（令和7・8年分のみ58万円〜95万円に上乗せ）が見直されています。本ツールはこの改正に対応した金額で計算しています。住民税は前年の所得をもとに翌年度に課税されるため、新卒・転職1年目は原則として住民税がかかりません（2年目の6月から天引きが始まります）。この計算は「今の年収がそのまま続いた場合」の定常状態の目安です。社会保険料率は<a href="https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/premium_prefectures/r08/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">協会けんぽ</a>、所得税の制度は<a href="https://www.nta.go.jp/users/gensen/2025kiso/index.htm" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">国税庁</a>の最新情報にもとづいています。
+    ⚠️ 令和7年度・8年度の税制改正により、給与所得控除の最低保障額（55万円→74万円）と所得税の基礎控除（令和8年分は合計所得489万円以下なら104万円など）が見直されています。本ツールはこの改正に対応した金額で計算しています。住民税は前年の所得をもとに翌年度に課税されるため、新卒・転職1年目は原則として住民税がかかりません（2年目の6月から天引きが始まります）。この計算は「今の年収がそのまま続いた場合」の定常状態の目安です。社会保険料率は<a href="https://www.kyoukaikenpo.or.jp/about/business/insurance_rate/premium_prefectures/r08/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">協会けんぽ</a>、所得税の制度は<a href="https://www.nta.go.jp/users/gensen/2025kiso/index.htm" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">国税庁</a>の最新情報にもとづいています。
   </div>
 
   <section>
@@ -326,7 +326,7 @@ footer.site-footer a { color: var(--accent); }
     <p><strong>ステップ2: 社会保険料を概算する</strong><br>
     健康保険料・厚生年金保険料・雇用保険料を合わせた社会保険料を、額面年収に対しておよそ14.7%(40歳未満)・15.5%(40歳以上)の概算率で計算します。実際の内訳や正確な料率は「<a href="https://webtools-labs.com/shakaihoken-uchiwake-keisan/">給与の社会保険料 内訳計算ツール</a>」でご確認いただけます。</p>
     <p><strong>ステップ3: 所得税を計算する</strong><br>
-    給与所得から社会保険料と基礎控除を引いた「課税所得」に対して、5%〜45%の累進税率をかけます。所得税の基礎控除は令和7・8年分に限り、合計所得金額に応じて58万円〜95万円に引き上げられています（令和9年分以後は58万円に戻る予定）。年収が上がるほど段階的に税率が上がっていく仕組みで、2037年までは復興特別所得税として通常の所得税額の2.1%が上乗せされます。</p>
+    給与所得から社会保険料と基礎控除を引いた「課税所得」に対して、5%〜45%の累進税率をかけます。所得税の基礎控除は、令和8年分は合計所得金額489万円以下なら104万円、655万円以下なら67万円、それを超えると62万円です（令和8年度税制改正。上乗せ分は令和9年分までの特例）。年収が上がるほど段階的に税率が上がっていく仕組みで、2037年までは復興特別所得税として通常の所得税額の2.1%が上乗せされます。</p>
     <p><strong>ステップ4: 住民税を計算する</strong><br>
     住民税は、給与所得から社会保険料と住民税用の基礎控除(43万円)を引いた金額の10%(所得割)に、定額の均等割5,000円を加えて計算します。前年の所得をもとに翌年度課税されるため、新卒1年目は原則かかりません。</p>
     <p>最後に、額面年収からステップ2〜4で計算した社会保険料・所得税・住民税を差し引いた金額が、手取り年収になります。</p>
@@ -341,13 +341,13 @@ footer.site-footer a { color: var(--accent); }
         <tbody>
           <tr><td>① 給与所得控除後の給与所得</td><td class="num">276万円(400万円 − 124万円)</td></tr>
           <tr><td>② 社会保険料(概算14.7%)</td><td class="num">▲58.8万円</td></tr>
-          <tr><td>③ 所得税(復興特別所得税込み)</td><td class="num">▲6.6万円</td></tr>
+          <tr><td>③ 所得税(復興特別所得税込み)</td><td class="num">▲5.8万円</td></tr>
           <tr><td>④ 住民税</td><td class="num">▲17.9万円</td></tr>
-          <tr class="total"><td>手取り年収</td><td class="num">約316.7万円(月換算 約26.4万円)</td></tr>
+          <tr class="total"><td>手取り年収</td><td class="num">約317.5万円(月換算 約26.5万円)</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="disclaimer">額面400万円に対して、手取りは約78.7%になる計算です。年収帯によってこの割合は変わるため、ご自身の年収での目安は上の計算フォームでご確認ください。</p>
+    <p class="disclaimer">額面400万円に対して、手取りは約79.4%になる計算です。年収帯によってこの割合は変わるため、ご自身の年収での目安は上の計算フォームでご確認ください。</p>
   </section>
 
   <div class="pr-box">
@@ -473,13 +473,16 @@ footer.site-footer a { color: var(--accent); }
     return 1950000;
   }
 
-  // 所得税の基礎控除（令和7・8年分の時限措置。国税庁「基礎控除の見直し等」にもとづく）
+  // 所得税の基礎控除（令和8年分。本則62万円＋特例加算：合計所得489万円以下は42万円、655万円以下は5万円。
+  // 令和8年度税制改正・国税庁タックスアンサーNo.1199にもとづく。引数は給与所得＝合計所得金額とみなす）
   function basicDeduction(salaryIncome) {
-    if (salaryIncome <= 1320000) return 950000;
-    if (salaryIncome <= 3360000) return 880000;
-    if (salaryIncome <= 4890000) return 680000;
-    if (salaryIncome <= 6550000) return 630000;
-    return 580000;
+    if (salaryIncome <= 4890000) return 1040000;
+    if (salaryIncome <= 6550000) return 670000;
+    if (salaryIncome <= 23500000) return 620000;
+    if (salaryIncome <= 24000000) return 480000;
+    if (salaryIncome <= 24500000) return 320000;
+    if (salaryIncome <= 25000000) return 160000;
+    return 0;
   }
 
   function socialInsurance(income, ageGroup) {
