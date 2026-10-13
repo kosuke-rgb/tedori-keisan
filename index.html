@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>手取り計算ツール | 額面年収から手取りを概算</title>
+<title>手取り計算ツール【2026年・令和8年】年収・月収から手取りがすぐ分かる｜早見表つき</title>
 <meta name="description" content="求人票に書いてある額面年収を入れるだけで、社会保険料・所得税・住民税を差し引いた手取り年収・手取り月収の目安を計算。転職・就活で「結局いくら手元に残るか」がすぐ分かる無料ツールです。">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://webtools-labs.com/tedori-keisan/">
@@ -31,7 +31,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="webtools-labs">
-<meta property="og:title" content="手取り計算ツール | 額面年収から手取りを概算">
+<meta property="og:title" content="手取り計算ツール【2026年・令和8年】年収・月収から手取りがすぐ分かる｜早見表つき">
 <meta property="og:description" content="額面年収を入れるだけで、社会保険料・所得税・住民税を引いた手取り年収・月収の目安が分かります。">
 <meta property="og:url" content="https://webtools-labs.com/tedori-keisan/">
 <meta property="og:image" content="https://webtools-labs.com/tedori-keisan/og-image.png">
@@ -59,6 +59,16 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "月収30万円の手取りはいくらですか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "ボーナスなし・40歳未満・独身の場合、額面の月給30万円の手取りは約24万円（239,439円）が目安です。引かれるのは社会保険料約4.4万円、所得税約3,700円、住民税約1.3万円です。社会人1年目で住民税がかからない場合は約25万円になります。上の計算ツールで「月給とボーナスで入力」を選ぶと、ボーナスがある場合も計算できます。" }
+    },
+    {
+      "@type": "Question",
+      "name": "2026年は手取りが増えますか？",
+      "acceptedAnswer": { "@type": "Answer", "text": "令和8年度の税制改正で、2026年分から基礎控除（最大104万円）と給与所得控除の最低額（74万円）が引き上げられ、所得税が減ります。ただし2026年中の毎月の源泉徴収は改正前の税額表で計算されるため、減税分は12月の年末調整でまとめて戻ります。毎月の手取りが増えるのは、新しい税額表が使われる2027年1月の給与からです。" }
+    },
     {
       "@type": "Question",
       "name": "額面年収と手取り年収は何が違いますか？",
@@ -259,7 +269,7 @@ footer.site-footer a { color: var(--accent); }
   <header class="masthead">
     <h1>手取り計算ツール</h1>
     <p class="lede">求人票に書いてある額面年収を入れるだけで、社会保険料・所得税・住民税を差し引いた手取り年収・手取り月収の目安を計算します。</p>
-    <span class="updated-note">税率・保険料率 最終確認日: 2026年10月2日（令和8年度税制改正の基礎控除（合計所得489万円以下は104万円）に対応、令和7・8年度税制改正の給与所得控除・基礎控除の見直しに対応済み）</span>
+    <span class="updated-note">税率・保険料率 最終確認日: 2026年10月13日（令和8年度税制改正の基礎控除（合計所得489万円以下は104万円）に対応、令和7・8年度税制改正の給与所得控除・基礎控除の見直しに対応済み）</span>
     <p class="ad-disclosure" style="font-size:0.75rem;opacity:0.7;margin:0.5rem 0 0;">※当サイトはアフィリエイト広告（PR）を利用しています。</p>
   </header>
 
@@ -278,6 +288,25 @@ footer.site-footer a { color: var(--accent); }
     <h2>手取りを計算</h2>
     <div class="field-row">
       <div class="field">
+        <label for="mode">入力のしかた</label>
+        <select id="mode">
+          <option value="annual" selected>額面年収で入力</option>
+          <option value="monthly">月給とボーナスで入力</option>
+        </select>
+      </div>
+    </div>
+    <div class="field-row" id="monthlyFields" style="display:none">
+      <div class="field">
+        <label for="monthlyPay">月給（額面・円）</label>
+        <input type="number" id="monthlyPay" min="0" step="10000" value="300000">
+      </div>
+      <div class="field">
+        <label for="bonusPay">ボーナス（年間の合計・額面・円）</label>
+        <input type="number" id="bonusPay" min="0" step="10000" value="0">
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field" id="annualField">
         <label for="income">額面年収（円）</label>
         <input type="number" id="income" min="0" step="10000" value="4000000">
       </div>
@@ -314,10 +343,34 @@ footer.site-footer a { color: var(--accent); }
     <div class="ref-table">
       <table>
         <thead><tr><th>額面年収</th><th class="num">手取り年収の目安</th><th class="num">手取り月収の目安</th></tr></thead>
-        <tbody id="refTableBody"></tbody>
+        <tbody id="refTableBody"><tr><td>3,000,000円</td><td class="num">2,411,584円</td><td class="num">200,965円</td></tr><tr><td>4,000,000円</td><td class="num">3,175,011円</td><td class="num">264,584円</td></tr><tr><td>5,000,000円</td><td class="num">3,929,376円</td><td class="num">327,448円</td></tr><tr><td>6,000,000円</td><td class="num">4,658,828円</td><td class="num">388,236円</td></tr><tr><td>7,000,000円</td><td class="num">5,313,473円</td><td class="num">442,789円</td></tr><tr><td>8,000,000円</td><td class="num">5,937,411円</td><td class="num">494,784円</td></tr><tr><td>10,000,000円</td><td class="num">7,129,446円</td><td class="num">594,121円</td></tr></tbody>
       </table>
     </div>
     <p class="disclaimer">40歳未満・独身・扶養なしの場合の概算です。</p>
+  </section>
+
+  <section>
+    <h2>月収別 手取りの早見表（ボーナスなし・2026年）</h2>
+    <p>額面の月給ごとに、毎月の手取りの目安と引かれる金額の内訳を並べました。社会人1年目は前年の所得がないため住民税がかからず、そのぶん手取りが多くなります。</p>
+    <div class="ref-table" style="overflow-x:auto">
+      <table style="white-space:nowrap">
+        <thead><tr><th>額面の月給</th><th class="num">手取り月収</th><th class="num">手取り（住民税なし）<br>社会人1年目など</th><th class="num">社会保険料</th><th class="num">所得税</th><th class="num">住民税</th></tr></thead>
+        <tbody>
+          <tr><td>15万円</td><td class="num"><strong>124,488円</strong></td><td class="num">127,950円</td><td class="num">22,050円</td><td class="num">0円</td><td class="num">3,462円</td></tr>
+          <tr><td>18万円</td><td class="num"><strong>147,254円</strong></td><td class="num">153,274円</td><td class="num">26,460円</td><td class="num">266円</td><td class="num">6,021円</td></tr>
+          <tr><td>20万円</td><td class="num"><strong>162,492円</strong></td><td class="num">169,719円</td><td class="num">29,400円</td><td class="num">882円</td><td class="num">7,227円</td></tr>
+          <tr><td>22万円</td><td class="num"><strong>177,881円</strong></td><td class="num">186,214円</td><td class="num">32,340円</td><td class="num">1,446円</td><td class="num">8,333円</td></tr>
+          <tr><td>25万円</td><td class="num"><strong>200,965円</strong></td><td class="num">210,957円</td><td class="num">36,750円</td><td class="num">2,293円</td><td class="num">9,992円</td></tr>
+          <tr><td>28万円</td><td class="num"><strong>224,049円</strong></td><td class="num">235,700円</td><td class="num">41,160円</td><td class="num">3,140円</td><td class="num">11,651円</td></tr>
+          <tr><td>30万円</td><td class="num"><strong>239,439円</strong></td><td class="num">252,196円</td><td class="num">44,100円</td><td class="num">3,705円</td><td class="num">12,757円</td></tr>
+          <tr><td>35万円</td><td class="num"><strong>277,157円</strong></td><td class="num">293,179円</td><td class="num">51,450円</td><td class="num">5,371円</td><td class="num">16,022円</td></tr>
+          <tr><td>40万円</td><td class="num"><strong>314,875円</strong></td><td class="num">334,162円</td><td class="num">58,800円</td><td class="num">7,038円</td><td class="num">19,287円</td></tr>
+          <tr><td>45万円</td><td class="num"><strong>352,184円</strong></td><td class="num">374,736円</td><td class="num">66,150円</td><td class="num">9,114円</td><td class="num">22,552円</td></tr>
+          <tr><td>50万円</td><td class="num"><strong>388,236円</strong></td><td class="num">414,052円</td><td class="num">73,500円</td><td class="num">12,448円</td><td class="num">25,817円</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="disclaimer">40歳未満・独身・扶養なし・協会けんぽ（東京都）で、年収＝月給×12として上の計算ツールと同じ方法で計算した目安です。所得税は令和8年分の年税額を12で割った額です。2026年は毎月の源泉徴収が改正前の税額表で計算されるため、実際の天引きはこれより少し多く、差額は12月の年末調整でまとめて戻ります（<a href="https://webtools-labs.com/nencho-kanpu-keisan/">年末調整 還付金シミュレーター</a>）。月30万円なら手取りは約24万円で、額面のおよそ8割です。</p>
   </section>
 
   <section>
@@ -390,6 +443,14 @@ footer.site-footer a { color: var(--accent); }
 
   <section>
     <h2>よくある質問</h2>
+    <details class="faq-item">
+      <summary>月収30万円の手取りはいくらですか？</summary>
+      <p>ボーナスなし・40歳未満・独身の場合、額面の月給30万円の手取りは約24万円（239,439円）が目安です。引かれるのは社会保険料約4.4万円、所得税約3,700円、住民税約1.3万円です。社会人1年目で住民税がかからない場合は約25万円になります。上の計算ツールで「月給とボーナスで入力」を選ぶと、ボーナスがある場合も計算できます。</p>
+    </details>
+    <details class="faq-item">
+      <summary>2026年は手取りが増えますか？</summary>
+      <p>令和8年度の税制改正で、2026年分から基礎控除（最大104万円）と給与所得控除の最低額（74万円）が引き上げられ、所得税が減ります。ただし2026年中の毎月の源泉徴収は改正前の税額表で計算されるため、減税分は12月の年末調整でまとめて戻ります。毎月の手取りが増えるのは、新しい税額表が使われる2027年1月の給与からです。</p>
+    </details>
     <details class="faq-item">
       <summary>額面年収と手取り年収は何が違いますか？</summary>
       <p>額面年収は、社会保険料や税金が引かれる前の給与総額（求人票や源泉徴収票の「支払金額」）です。そこから健康保険料・厚生年金保険料・雇用保険料・所得税・住民税を差し引いた、実際に振り込まれる金額が手取り年収です。一般的に額面の75〜80%程度が手取りの目安になります。</p>
@@ -530,6 +591,11 @@ footer.site-footer a { color: var(--accent); }
   }
 
   var incomeInput = document.getElementById('income');
+  var modeSelect = document.getElementById('mode');
+  var monthlyFields = document.getElementById('monthlyFields');
+  var annualField = document.getElementById('annualField');
+  var monthlyPayInput = document.getElementById('monthlyPay');
+  var bonusPayInput = document.getElementById('bonusPay');
   var ageGroupSelect = document.getElementById('ageGroup');
   var summaryCards = document.getElementById('summaryCards');
   var resultBody = document.getElementById('resultBody');
@@ -547,14 +613,28 @@ footer.site-footer a { color: var(--accent); }
   }
 
   function render() {
-    var income = Math.max(0, Number(incomeInput.value) || 0);
+    var isMonthly = modeSelect.value === 'monthly';
+    monthlyFields.style.display = isMonthly ? '' : 'none';
+    annualField.style.display = isMonthly ? 'none' : '';
+    var monthlyPay = Math.max(0, Number(monthlyPayInput.value) || 0);
+    var bonusPay = Math.max(0, Number(bonusPayInput.value) || 0);
+    var income = isMonthly ? monthlyPay * 12 + bonusPay : Math.max(0, Number(incomeInput.value) || 0);
     var ageGroup = ageGroupSelect.value;
     var r = calc(income, ageGroup);
 
     summaryCards.innerHTML =
       '<div class="summary-card"><div class="label">手取り年収</div><div class="value">' + yen(r.netIncome) + '</div><div class="sub">額面 ' + yen(r.income) + '</div></div>' +
       '<div class="summary-card"><div class="label">手取り月収</div><div class="value">' + yen(r.netIncome / 12) + '</div><div class="sub">単純に12等分した目安</div></div>' +
-      '<div class="summary-card"><div class="label">天引き額の合計</div><div class="value">' + yen(income - r.netIncome) + '</div><div class="sub">額面の ' + Math.round((income - r.netIncome) / income * 100) + '%</div></div>';
+      '<div class="summary-card"><div class="label">天引き額の合計</div><div class="value">' + yen(income - r.netIncome) + '</div><div class="sub">額面の ' + (income > 0 ? Math.round((income - r.netIncome) / income * 100) : 0) + '%</div></div>';
+    if (isMonthly && income > 0) {
+      // 毎月の手取り: 社会保険料は月給に比例、所得税は年税額を月給・賞与の割合で配分、住民税は毎月の給与から12回で天引き
+      var siRate = r.socialIns / income;
+      var monthNet = monthlyPay - monthlyPay * siRate - r.incTax * (monthlyPay * 12 / income) / 12 - r.resTax / 12;
+      var bonusNet = bonusPay - bonusPay * siRate - r.incTax * (bonusPay / income);
+      summaryCards.innerHTML +=
+        '<div class="summary-card"><div class="label">毎月の手取り（目安）</div><div class="value">' + yen(monthNet) + '</div><div class="sub">月給 ' + yen(monthlyPay) + ' の場合</div></div>' +
+        (bonusPay > 0 ? '<div class="summary-card"><div class="label">ボーナスの手取り（年間・目安）</div><div class="value">' + yen(bonusNet) + '</div><div class="sub">額面 ' + yen(bonusPay) + '（住民税は毎月の給与から引かれる前提）</div></div>' : '');
+    }
 
     resultBody.innerHTML =
       '<tr><td>社会保険料（健康保険・厚生年金・雇用保険）</td><td class="num">-' + yen(r.socialIns) + '</td><td class="num">-' + yen(r.socialIns / 12) + '</td></tr>' +
@@ -575,6 +655,9 @@ footer.site-footer a { color: var(--accent); }
   }).join('');
 
   incomeInput.addEventListener('input', render);
+  modeSelect.addEventListener('change', render);
+  monthlyPayInput.addEventListener('input', render);
+  bonusPayInput.addEventListener('input', render);
   ageGroupSelect.addEventListener('change', render);
 
   render();
