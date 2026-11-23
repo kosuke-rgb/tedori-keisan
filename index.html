@@ -280,6 +280,17 @@ footer.site-footer a { color: var(--accent); }
   .ref-table th:first-child, .ref-table td:first-child { min-width: 5em; position: sticky; left: 0; z-index: 1; background: var(--bg); box-shadow: 1px 0 0 var(--line); }
   .ref-table tr.best td:first-child, .ref-table tr.total td:first-child, .ref-table tr.next td:first-child, .ref-table tr.highlight td:first-child { background: var(--best-bg, var(--bg)); }
 }
+/* スマホでは横長の早見表をカード表示に（2026-11-23） */
+@media (max-width: 600px) {
+  .ref-table table.stack, .ref-table table.stack tbody, .ref-table table.stack tr, .ref-table table.stack td { display: block; width: auto; }
+  .ref-table table.stack thead { display: none; }
+  .ref-table table.stack tr { border: 1px solid var(--line); border-radius: 8px; margin: 0 0 0.6rem; padding: 0.35rem 0.7rem; }
+  .ref-table table.stack td { display: flex; justify-content: space-between; align-items: baseline; gap: 0.8rem; border: 0; padding: 0.22rem 0; text-align: right; position: static; box-shadow: none; min-width: 0; background: none; font-size: 0.86rem; white-space: normal; }
+  .ref-table table.stack td > span { text-align: right; white-space: nowrap; }
+  .ref-table table.stack td::before { content: attr(data-label); color: var(--muted); text-align: left; font-weight: 400; flex: 1 1 auto; }
+  .ref-table table.stack td:first-child { display: block; text-align: left; font-weight: 700; border-bottom: 1px solid var(--line); padding-bottom: 0.35rem; margin-bottom: 0.2rem; }
+  .ref-table table.stack td:first-child::before { content: none; }
+}
 </style>
 </head>
 <body>
@@ -389,20 +400,20 @@ footer.site-footer a { color: var(--accent); }
     <h2>月収別 手取りの早見表（ボーナスなし・2026年）</h2>
     <p>額面の月給ごとに、毎月の手取りの目安と引かれる金額の内訳を並べました。社会人1年目は前年の所得がないため住民税がかからず、そのぶん手取りが多くなります。</p>
     <div class="ref-table" style="overflow-x:auto">
-      <table style="white-space:nowrap">
+      <table class="stack" style="white-space:nowrap">
         <thead><tr><th>額面の月給</th><th class="num">手取り月収</th><th class="num">手取り（住民税なし）<br>社会人1年目など</th><th class="num">社会保険料</th><th class="num">所得税</th><th class="num">住民税</th></tr></thead>
         <tbody>
-          <tr><td>15万円</td><td class="num"><strong>124,488円</strong></td><td class="num nw">127,950円</td><td class="num nw">22,050円</td><td class="num nw">0円</td><td class="num nw">3,462円</td></tr>
-          <tr><td>18万円</td><td class="num"><strong>147,254円</strong></td><td class="num nw">153,274円</td><td class="num nw">26,460円</td><td class="num nw">266円</td><td class="num nw">6,021円</td></tr>
-          <tr><td>20万円</td><td class="num"><strong>162,492円</strong></td><td class="num nw">169,719円</td><td class="num nw">29,400円</td><td class="num nw">882円</td><td class="num nw">7,227円</td></tr>
-          <tr><td>22万円</td><td class="num"><strong>177,881円</strong></td><td class="num nw">186,214円</td><td class="num nw">32,340円</td><td class="num nw">1,446円</td><td class="num nw">8,333円</td></tr>
-          <tr><td>25万円</td><td class="num"><strong>200,965円</strong></td><td class="num nw">210,957円</td><td class="num nw">36,750円</td><td class="num nw">2,293円</td><td class="num nw">9,992円</td></tr>
-          <tr><td>28万円</td><td class="num"><strong>224,049円</strong></td><td class="num nw">235,700円</td><td class="num nw">41,160円</td><td class="num nw">3,140円</td><td class="num nw">11,651円</td></tr>
-          <tr><td>30万円</td><td class="num"><strong>239,439円</strong></td><td class="num nw">252,196円</td><td class="num nw">44,100円</td><td class="num nw">3,705円</td><td class="num nw">12,757円</td></tr>
-          <tr><td>35万円</td><td class="num"><strong>277,157円</strong></td><td class="num nw">293,179円</td><td class="num nw">51,450円</td><td class="num nw">5,371円</td><td class="num nw">16,022円</td></tr>
-          <tr><td>40万円</td><td class="num"><strong>314,875円</strong></td><td class="num nw">334,162円</td><td class="num nw">58,800円</td><td class="num nw">7,038円</td><td class="num nw">19,287円</td></tr>
-          <tr><td>45万円</td><td class="num"><strong>352,184円</strong></td><td class="num nw">374,736円</td><td class="num nw">66,150円</td><td class="num nw">9,114円</td><td class="num nw">22,552円</td></tr>
-          <tr><td>50万円</td><td class="num"><strong>388,236円</strong></td><td class="num nw">414,052円</td><td class="num nw">73,500円</td><td class="num nw">12,448円</td><td class="num nw">25,817円</td></tr>
+          <tr><td data-label="額面の月給">15万円</td><td class="num" data-label="手取り月収"><span><strong>124,488円</strong></span></td><td class="num nw" data-label="手取り（住民税なし・社会人1年目など）"><span>127,950円</span></td><td class="num nw" data-label="社会保険料"><span>22,050円</span></td><td class="num nw" data-label="所得税"><span>0円</span></td><td class="num nw" data-label="住民税"><span>3,462円</span></td></tr>
+          <tr><td data-label="額面の月給">18万円</td><td class="num" data-label="手取り月収"><span><strong>147,254円</strong></span></td><td class="num nw" data-label="手取り（住民税なし・社会人1年目など）"><span>153,274円</span></td><td class="num nw" data-label="社会保険料"><span>26,460円</span></td><td class="num nw" data-label="所得税"><span>266円</span></td><td class="num nw" data-label="住民税"><span>6,021円</span></td></tr>
+          <tr><td data-label="額面の月給">20万円</td><td class="num" data-label="手取り月収"><span><strong>162,492円</strong></span></td><td class="num nw" data-label="手取り（住民税なし・社会人1年目など）"><span>169,719円</span></td><td class="num nw" data-label="社会保険料"><span>29,400円</span></td><td class="num nw" data-label="所得税"><span>882円</span></td><td class="num nw" data-label="住民税"><span>7,227円</span></td></tr>
+          <tr><td data-label="額面の月給">22万円</td><td class="num" data-label="手取り月収"><span><strong>177,881円</strong></span></td><td class="num nw" data-label="手取り（住民税なし・社会人1年目など）"><span>186,214円</span></td><td class="num nw" data-label="社会保険料"><span>32,340円</span></td><td class="num nw" data-label="所得税"><span>1,446円</span></td><td class="num nw" data-label="住民税"><span>8,333円</span></td></tr>
+          <tr><td data-label="額面の月給">25万円</td><td class="num" data-label="手取り月収"><span><strong>200,965円</strong></span></td><td class="num nw" data-label="手取り（住民税なし・社会人1年目など）"><span>210,957円</span></td><td class="num nw" data-label="社会保険料"><span>36,750円</span></td><td class="num nw" data-label="所得税"><span>2,293円</span></td><td class="num nw" data-label="住民税"><span>9,992円</span></td></tr>
+          <tr><td data-label="額面の月給">28万円</td><td class="num" data-label="手取り月収"><span><strong>224,049円</strong></span></td><td class="num nw" data-label="手取り（住民税なし・社会人1年目など）"><span>235,700円</span></td><td class="num nw" data-label="社会保険料"><span>41,160円</span></td><td class="num nw" data-label="所得税"><span>3,140円</span></td><td class="num nw" data-label="住民税"><span>11,651円</span></td></tr>
+          <tr><td data-label="額面の月給">30万円</td><td class="num" data-label="手取り月収"><span><strong>239,439円</strong></span></td><td class="num nw" data-label="手取り（住民税なし・社会人1年目など）"><span>252,196円</span></td><td class="num nw" data-label="社会保険料"><span>44,100円</span></td><td class="num nw" data-label="所得税"><span>3,705円</span></td><td class="num nw" data-label="住民税"><span>12,757円</span></td></tr>
+          <tr><td data-label="額面の月給">35万円</td><td class="num" data-label="手取り月収"><span><strong>277,157円</strong></span></td><td class="num nw" data-label="手取り（住民税なし・社会人1年目など）"><span>293,179円</span></td><td class="num nw" data-label="社会保険料"><span>51,450円</span></td><td class="num nw" data-label="所得税"><span>5,371円</span></td><td class="num nw" data-label="住民税"><span>16,022円</span></td></tr>
+          <tr><td data-label="額面の月給">40万円</td><td class="num" data-label="手取り月収"><span><strong>314,875円</strong></span></td><td class="num nw" data-label="手取り（住民税なし・社会人1年目など）"><span>334,162円</span></td><td class="num nw" data-label="社会保険料"><span>58,800円</span></td><td class="num nw" data-label="所得税"><span>7,038円</span></td><td class="num nw" data-label="住民税"><span>19,287円</span></td></tr>
+          <tr><td data-label="額面の月給">45万円</td><td class="num" data-label="手取り月収"><span><strong>352,184円</strong></span></td><td class="num nw" data-label="手取り（住民税なし・社会人1年目など）"><span>374,736円</span></td><td class="num nw" data-label="社会保険料"><span>66,150円</span></td><td class="num nw" data-label="所得税"><span>9,114円</span></td><td class="num nw" data-label="住民税"><span>22,552円</span></td></tr>
+          <tr><td data-label="額面の月給">50万円</td><td class="num" data-label="手取り月収"><span><strong>388,236円</strong></span></td><td class="num nw" data-label="手取り（住民税なし・社会人1年目など）"><span>414,052円</span></td><td class="num nw" data-label="社会保険料"><span>73,500円</span></td><td class="num nw" data-label="所得税"><span>12,448円</span></td><td class="num nw" data-label="住民税"><span>25,817円</span></td></tr>
         </tbody>
       </table>
     </div>
